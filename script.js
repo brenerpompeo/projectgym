@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll(); // Executa uma vez para verificar o estado inicial
+        onScroll();
     })();
 
     // --- Lógica de Animação no Scroll ---
@@ -96,26 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'Termos de Uso',
                 content: `
                     <h4 class="font-bold mb-2 text-white">1. Aceitação dos Termos</h4>
-                    <p class="mb-4">Ao se matricular e utilizar as instalações da Project Gym, você concorda em cumprir estes Termos de Uso e todas as regras da academia. Se você não concordar com qualquer parte dos termos, não deverá utilizar nossos serviços.</p>
+                    <p class="mb-4">Ao se matricular e utilizar as instalações da Project Gym, você concorda em cumprir estes Termos de Uso e todas as regras da academia.</p>
                     <h4 class="font-bold mb-2 text-white">2. Pagamento e Matrícula</h4>
-                    <p class="mb-4">Os pagamentos dos planos devem ser realizados nas datas de vencimento estipuladas. Atrasos podem resultar em taxas adicionais ou suspensão do acesso. A matrícula é pessoal e intransferível.</p>
-                    <h4 class="font-bold mb-2 text-white">3. Conduta e Utilização</h4>
-                    <p class="mb-4">Esperamos que todos os membros mantenham uma conduta respeitosa. O uso correto dos equipamentos é obrigatório. A Project Gym não se responsabiliza por lesões resultantes de uso inadequado dos equipamentos ou da não observância das orientações dos instrutores.</p>
-                    <h4 class="font-bold mb-2 text-white">4. Cancelamento</h4>
-                    <p>As políticas de cancelamento variam de acordo com o plano contratado. Consulte o contrato de adesão ou a recepção para obter detalhes sobre multas e prazos.</p>
+                    <p class="mb-4">Os pagamentos dos planos devem ser realizados nas datas de vencimento. Atrasos podem resultar em taxas ou suspensão do acesso.</p>
+                    <h4 class="font-bold mb-2 text-white">3. Conduta</h4>
+                    <p class="mb-4">Esperamos que todos os membros mantenham uma conduta respeitosa. O uso correto dos equipamentos é obrigatório.</p>
                 `
             },
             privacy: {
                 title: 'Política de Privacidade',
                 content: `
                     <h4 class="font-bold mb-2 text-white">1. Coleta de Dados</h4>
-                    <p class="mb-4">Coletamos informações pessoais (nome, contato, dados de pagamento) no momento da sua matrícula para a gestão do seu plano e para comunicação. Podemos coletar dados de saúde através da avaliação física, com seu consentimento explícito, para personalizar seu treino.</p>
+                    <p class="mb-4">Coletamos dados (nome, contato, pagamento) para gerenciar seu plano. Dados de saúde da avaliação física são usados para personalizar seu treino, com seu consentimento.</p>
                     <h4 class="font-bold mb-2 text-white">2. Uso de Dados</h4>
-                    <p class="mb-4">Seus dados são utilizados para processar pagamentos, gerenciar seu acesso, enviar comunicações sobre seu plano, eventos e promoções da Project Gym. Dados de saúde são usados exclusivamente pela nossa equipe para garantir a segurança e eficácia do seu programa de treinos.</p>
+                    <p class="mb-4">Seus dados são usados para processar pagamentos, gerenciar seu acesso e enviar comunicações sobre a Project Gym. Não vendemos seus dados.</p>
                     <h4 class="font-bold mb-2 text-white">3. Compartilhamento de Dados</h4>
-                    <p class="mb-4">Não compartilhamos suas informações pessoais com terceiros, exceto com processadores de pagamento e, se aplicável, com as plataformas de benefícios corporativos (Wellhub, Totalpass, etc.) que você utiliza para acessar nossos serviços.</p>
-                     <h4 class="font-bold mb-2 text-white">4. Seus Direitos</h4>
-                    <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão dos seus dados pessoais. Para exercer esses direitos, entre em contato com nossa recepção.</p>
+                    <p class="mb-4">Compartilhamos informações com processadores de pagamento e plataformas de benefícios (Wellhub, Totalpass) que você utiliza. Links externos (Google Maps, WhatsApp) têm suas próprias políticas de privacidade.</p>
+                    <h4 class="font-bold mb-2 text-white">4. Seus Direitos</h4>
+                    <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão dos seus dados. Para exercer esses direitos, envie um e-mail para <a href="mailto:privacidade@projectgym.com.br" class="underline">privacidade@projectgym.com.br</a>.</p>
                 `
             }
         };
@@ -142,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                // Apenas remove a classe se o menu mobile não estiver aberto
                 if (document.getElementById('drawer').classList.contains('hidden')) {
                    bodyEl.classList.remove('overflow-hidden');
                 }
@@ -168,13 +165,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     })();
     
-    // --- PROTEÇÃO DE CÓDIGO: Lógica para desabilitar interações indesejadas ---
-    (() => {
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            // Bloqueia F12, Ctrl+Shift+I/J/C, Ctrl+U
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === 'U')) {
-                e.preventDefault();
+    // --- Lógica do Banner de Cookies ---
+    (function cookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        const acceptBtn = document.getElementById('accept-cookies');
+        const declineBtn = document.getElementById('decline-cookies');
+
+        if (!banner || !acceptBtn || !declineBtn) return;
+
+        setTimeout(() => {
+            if (!localStorage.getItem('cookie_consent')) {
+                banner.classList.remove('hidden', 'translate-y-24', 'opacity-0');
+                banner.classList.add('flex');
+            }
+        }, 2000);
+
+        const handleConsent = (consent) => {
+            localStorage.setItem('cookie_consent', consent);
+            banner.classList.add('opacity-0', 'translate-y-24');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+                banner.classList.remove('flex');
+            }, 500);
+        };
+
+        acceptBtn.addEventListener('click', () => handleConsent('accepted'));
+        declineBtn.addEventListener('click', () => handleConsent('declined'));
+    })();
+
+    // --- Proteção de Conteúdo ---
+    (function contentProtection() {
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && ['I', 'J', 'C'].includes(event.key.toUpperCase())) || (event.ctrlKey && event.key.toUpperCase() === 'U')) {
+                event.preventDefault();
             }
         });
     })();
