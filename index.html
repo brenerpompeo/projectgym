@@ -9,12 +9,11 @@
     <meta name="description" content="Descubra a Project Gym em Campinas. Uma academia premium com musculação, aulas exclusivas, nutricionista e estética. Parceiros Wellhub, Totalpass e Gurupass.">
     <meta name="keywords" content="academia premium, campinas, musculação, personal trainer, aulas, nutricionista, totalpass, wellhub, gurupass, pilates, muay thai, spinning, zumba, funcional">
     <meta name="robots" content="index, follow">
-    <!-- OTIMIZAÇÃO SEO: Garanta que esta URL seja a final do seu site ao hospedar. -->
     <link rel="canonical" href="https://projectgym.com.br/"> 
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://projectgym.com.br/"> <!-- OTIMIZAÇÃO SEO: Substituir pela URL real do site -->
+    <meta property="og:url" content="https://projectgym.com.br/">
     <meta property="og:title" content="Project Gym - Sua Melhor Versão Começa Aqui">
     <meta property="og:description" content="Uma experiência de fitness premium em Campinas, projetada para você superar limites com suporte e tecnologia de ponta.">
     <meta property="og:image" content="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphq5CVrORKcUC86JCZAytYOvALnV8NLp9s81UG2qHB838TH3RM0ewonllCKxayOV7GeQK7XgwZceL5EYwHmaLh2fAmtDp-R4zHOPGsIzu7vWmZFbVag3jqF8FHYEDq9dIWWkZpnA=s2048">
@@ -23,12 +22,15 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://projectgym.com.br/"> <!-- OTIMIZAÇÃO SEO: Substituir pela URL real do site -->
+    <meta name="twitter:url" content="https://projectgym.com.br/">
     <meta name="twitter:title" content="Project Gym - Sua Melhor Versão Começa Aqui">
     <meta name="twitter:description" content="Uma experiência de fitness premium em Campinas, projetada para você superar limites com suporte e tecnologia de ponta.">
     <meta name="twitter:image" content="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphq5CVrORKcUC86JCZAytYOvALnV8NLp9s81UG2qHB838TH3RM0ewonllCKxayOV7GeQK7XgwZceL5EYwHmaLh2fAmtDp-R4zHOPGsIzu7vWmZFbVag3jqF8FHYEDq9dIWWkZpnA=s2048">
     
-    <!-- OTIMIZAÇÃO DE PERFORMANCE: Para produção, o ideal é compilar o CSS com o Tailwind CLI e incluir o arquivo gerado aqui, em vez de usar o script da CDN. Isso reduz drasticamente o tamanho do arquivo. -->
+    <!-- Proteção de Código: Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com;">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
@@ -39,97 +41,9 @@
     <!-- Favicon -->
     <link rel="icon" href="https://lh3.googleusercontent.com/p/AF1QipNm6jBwnRPRbAGa9ztf30wZEH1iKR6OXVDggb68=s128">
 
-    <!-- Estilos Internos -->
-    <style>
-        html {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        /* Classe para travar o scroll do body quando o menu ou modal está aberto */
-        body.overflow-hidden {
-            overflow: hidden;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0A0A;
-            color: #E5E7EB; /* gray-200 */
-        }
-        .font-display {
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 0.075em;
-        }
-        .hero-bg {
-            background-image: linear-gradient(to top, rgba(10,10,10,1) 10%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,1) 100%), url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphq5CVrORKcUC86JCZAytYOvALnV8NLp9s81UG2qHB838TH3RM0ewonllCKxayOV7GeQK7XgwZceL5EYwHmaLh2fAmtDp-R4zHOPGsIzu7vWmZFbVag3jqF8FHYEDq9dIWWkZpnA=s2048');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .faq-item.open .faq-answer {
-            max-height: 20rem;
-        }
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-        .faq-item.open .faq-icon {
-            transform: rotate(180deg);
-        }
-        
-        /* Efeito de elevação no header com scroll */
-        #site-header.elev { 
-            background: rgba(10, 10, 10, .9); 
-            border-bottom-color: rgba(255, 255, 255, 0.08);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
 
-        /* Animação de revelação de elementos no scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Estilização da barra de rolagem - Página inteira */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background-color: #FBBF24; /* amber-400 */
-            border-radius: 10px;
-            border: 2px solid #1a1a1a;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #F59E0B; /* amber-500 */
-        }
-
-        /* Estilização da barra de rolagem - Menu mobile e Modal */
-        #drawer nav::-webkit-scrollbar, #modal-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        #drawer nav::-webkit-scrollbar-track, #modal-content::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        #drawer nav::-webkit-scrollbar-thumb, #modal-content::-webkit-scrollbar-thumb {
-            background-color: #4b5563; /* gray-600 */
-            border-radius: 10px;
-        }
-        #drawer nav::-webkit-scrollbar-thumb:hover, #modal-content::-webkit-scrollbar-thumb:hover {
-            background-color: #6b7280; /* gray-500 */
-        }
-    </style>
-    
     <!-- Schema.org - Dados Estruturados para SEO Local -->
     <script type="application/ld+json">
     {
@@ -156,12 +70,7 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday"
-          ],
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
           "opens": "05:00",
           "closes": "22:00"
         },
@@ -179,9 +88,7 @@
         },
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Sunday"
-          ],
+          "dayOfWeek": ["Sunday"],
           "opens": "00:00",
           "closes": "00:00"
         }
@@ -321,7 +228,6 @@
                 <div class="text-center mb-20 reveal">
                     <h2 class="text-6xl md:text-7xl font-display uppercase">Suporte Completo <span class="text-amber-400">para sua Jornada</span></h2>
                 </div>
-                <!-- AJUSTE DE RESPONSIVIDADE: O grid agora adapta melhor em telas médias (tablets) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 reveal">
                     <!-- Ícone Otimizado: Musculação -->
                     <div class="bg-[#111111] p-8 rounded-xl text-center shadow-lg transform hover:-translate-y-3 transition-transform duration-300 flex flex-col items-center">
@@ -665,185 +571,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Interno -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const bodyEl = document.body;
-            
-            // --- Lógica do Header e Menu ---
-            (function headerInit() {
-                const header = document.getElementById('site-header');
-                if (!header) return;
-                
-                const onScroll = () => header.classList.toggle('elev', window.scrollY > 20);
-                window.addEventListener('scroll', onScroll, { passive: true });
-                onScroll();
-
-                const drawer = document.getElementById('drawer');
-                const btnOpen = document.getElementById('btn-open');
-                const btnClose = document.getElementById('btn-close');
-                if (!drawer || !btnOpen || !btnClose) return;
-
-                const openMenu = () => {
-                    drawer.classList.remove('hidden');
-                    drawer.setAttribute('aria-hidden', 'false');
-                    bodyEl.classList.add('overflow-hidden');
-                };
-
-                const closeMenu = () => {
-                    drawer.classList.add('hidden');
-                    drawer.setAttribute('aria-hidden', 'true');
-                    bodyEl.classList.remove('overflow-hidden');
-                };
-
-                btnOpen.addEventListener('click', openMenu);
-                btnClose.addEventListener('click', closeMenu);
-                drawer.addEventListener('click', (e) => {
-                    if (e.target.id === 'drawer') closeMenu();
-                });
-                document.querySelectorAll('#drawer .drawer__link').forEach(link => {
-                    link.addEventListener('click', closeMenu);
-                });
-            })();
-            
-            // --- Lógica do Botão Flutuante de WhatsApp ---
-            (function fabWhatsapp() {
-                const fab = document.getElementById('whatsapp-fab');
-                if(!fab) return;
-
-                const onScroll = () => {
-                    if (window.scrollY > 400) {
-                        fab.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-                    } else {
-                        fab.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-                    }
-                };
-                window.addEventListener('scroll', onScroll, { passive: true });
-                onScroll(); // Executa uma vez para verificar o estado inicial
-            })();
-
-            // --- Lógica de Animação no Scroll ---
-            (function scrollReveal() {
-                const scrollRevealObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            scrollRevealObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                document.querySelectorAll('.reveal').forEach(el => {
-                    scrollRevealObserver.observe(el);
-                });
-            })();
-
-            // --- Lógica do FAQ (Accordion) ---
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.querySelector('.faq-question').addEventListener('click', () => {
-                    const isOpen = item.classList.contains('open');
-                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-                    if (!isOpen) {
-                        item.classList.add('open');
-                    }
-                });
-            });
-
-            // --- Lógica do Rodapé e Modal de Políticas ---
-            (function policyModal() {
-                const modal = document.getElementById('policy-modal');
-                if (!modal) return;
-
-                const modalContainer = modal.querySelector('div');
-                const closeBtn = document.getElementById('modal-close-btn');
-                const modalTitle = document.getElementById('modal-title');
-                const modalContent = document.getElementById('modal-content');
-                const links = document.querySelectorAll('[data-policy]');
-
-                const policies = {
-                    terms: {
-                        title: 'Termos de Uso',
-                        content: `
-                            <h4 class="font-bold mb-2 text-white">1. Aceitação dos Termos</h4>
-                            <p class="mb-4">Ao se matricular e utilizar as instalações da Project Gym, você concorda em cumprir estes Termos de Uso e todas as regras da academia. Se você não concordar com qualquer parte dos termos, não deverá utilizar nossos serviços.</p>
-                            <h4 class="font-bold mb-2 text-white">2. Pagamento e Matrícula</h4>
-                            <p class="mb-4">Os pagamentos dos planos devem ser realizados nas datas de vencimento estipuladas. Atrasos podem resultar em taxas adicionais ou suspensão do acesso. A matrícula é pessoal e intransferível.</p>
-                            <h4 class="font-bold mb-2 text-white">3. Conduta e Utilização</h4>
-                            <p class="mb-4">Esperamos que todos os membros mantenham uma conduta respeitosa. O uso correto dos equipamentos é obrigatório. A Project Gym não se responsabiliza por lesões resultantes de uso inadequado dos equipamentos ou da não observância das orientações dos instrutores.</p>
-                            <h4 class="font-bold mb-2 text-white">4. Cancelamento</h4>
-                            <p>As políticas de cancelamento variam de acordo com o plano contratado. Consulte o contrato de adesão ou a recepção para obter detalhes sobre multas e prazos.</p>
-                        `
-                    },
-                    privacy: {
-                        title: 'Política de Privacidade',
-                        content: `
-                            <h4 class="font-bold mb-2 text-white">1. Coleta de Dados</h4>
-                            <p class="mb-4">Coletamos informações pessoais (nome, contato, dados de pagamento) no momento da sua matrícula para a gestão do seu plano e para comunicação. Podemos coletar dados de saúde através da avaliação física, com seu consentimento explícito, para personalizar seu treino.</p>
-                            <h4 class="font-bold mb-2 text-white">2. Uso de Dados</h4>
-                            <p class="mb-4">Seus dados são utilizados para processar pagamentos, gerenciar seu acesso, enviar comunicações sobre seu plano, eventos e promoções da Project Gym. Dados de saúde são usados exclusivamente pela nossa equipe para garantir a segurança e eficácia do seu programa de treinos.</p>
-                            <h4 class="font-bold mb-2 text-white">3. Compartilhamento de Dados</h4>
-                            <p class="mb-4">Não compartilhamos suas informações pessoais com terceiros, exceto com processadores de pagamento e, se aplicável, com as plataformas de benefícios corporativos (Wellhub, Totalpass, etc.) que você utiliza para acessar nossos serviços.</p>
-                             <h4 class="font-bold mb-2 text-white">4. Seus Direitos</h4>
-                            <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão dos seus dados pessoais. Para exercer esses direitos, entre em contato com nossa recepção.</p>
-                        `
-                    }
-                };
-
-                const openModal = (type) => {
-                    const policy = policies[type];
-                    if (!policy) return;
-
-                    modalTitle.textContent = policy.title;
-                    modalContent.innerHTML = policy.content;
-                    
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-                    bodyEl.classList.add('overflow-hidden');
-                    setTimeout(() => {
-                        modal.classList.remove('opacity-0');
-                        modalContainer.classList.remove('scale-95');
-                    }, 10);
-                };
-
-                const closeModal = () => {
-                    modal.classList.add('opacity-0');
-                    modalContainer.classList.add('scale-95');
-                    setTimeout(() => {
-                        modal.classList.add('hidden');
-                        modal.classList.remove('flex');
-                        // Apenas remove a classe se o menu mobile não estiver aberto
-                        if (document.getElementById('drawer').classList.contains('hidden')) {
-                           bodyEl.classList.remove('overflow-hidden');
-                        }
-                    }, 300);
-                };
-
-                links.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const policyType = e.target.dataset.policy;
-                        openModal(policyType);
-                    });
-                });
-
-                closeBtn.addEventListener('click', closeModal);
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) closeModal();
-                });
-                document.addEventListener('keydown', (e) => {
-                  if (e.key === "Escape" && !modal.classList.contains('hidden')) {
-                    closeModal();
-                  }
-                });
-            })();
-            
-             // --- Atualiza o ano no Footer ---
-            (function year() {
-                const el = document.getElementById('year');
-                if (el) el.textContent = new Date().getFullYear();
-            })();
-
-        });
-    </script>
+    <!-- JavaScript Externo -->
+    <script src="script.js" defer></script>
 </body>
 </html>
