@@ -94,13 +94,17 @@
     
     <!-- Menu Mobile (Drawer) -->
     <div id="drawer" class="fixed inset-0 bg-black/60 z-50 hidden" aria-hidden="true">
-        <div class="absolute inset-x-4 top-8 bottom-8 bg-[#111111] border border-slate-700 rounded-3xl flex flex-col">
-            <div class="pt-4 px-4 pb-2 flex justify-end">
+        <div class="absolute inset-x-4 top-8 bg-[#111111] border border-slate-700 rounded-3xl flex flex-col max-h-[85vh]">
+            <div class="p-4 flex items-center justify-between border-b border-white/10 flex-shrink-0">
+                 <a href="#" class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNm6jBwnRPRbAGa9ztf30wZEH1iKR6OXVDggb68=s128" alt="Logo Project Gym" class="h-10 w-10 rounded-full object-cover" width="40" height="40">
+                    <span class="text-2xl font-display text-white tracking-wider">Project Gym</span>
+                </a>
                 <button id="btn-close" class="p-2" aria-label="Fechar menu">
                     <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M6 6l12 12M6 18L18 6" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
             </div>
-            <nav class="grid px-4 pb-4 overflow-y-auto">
+            <nav class="grid p-4 overflow-y-auto">
                 <a href="#sobre" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Sobre</a>
                 <a href="#diferenciais" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Diferenciais</a>
                 <a href="#oferecemos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">O que oferecemos</a>
@@ -286,7 +290,7 @@
                     <h2 class="text-6xl md:text-7xl font-display uppercase">O que nossos <span class="text-amber-400">alunos dizem</span></h2>
                     <div class="mt-4 flex flex-col items-center justify-center gap-2 text-gray-400">
                         <p class="text-lg">Baseado em avaliações reais de nossos membros.</p>
-                        <img loading="lazy" decoding="async" src="https://white.logodownload.org/wp-content/uploads/2020/11/google-white-logo-2.png" alt="Logo Google" class="h-6 mt-1 opacity-80" width="100" height="34">
+                        <img loading="lazy" decoding="async" src="https://white.logodownload.org/wp-content/uploads/2020/11/google-white-logo-2.png" alt="Logo Google" class="h-6 w-auto mt-1 opacity-80">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 reveal">
