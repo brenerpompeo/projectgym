@@ -33,6 +33,11 @@ body {
     overflow: hidden;
 }
 
+/* Adiciona o filtro para inverter a cor dos ícones para branco */
+#diferenciais img {
+    filter: invert(1);
+}
+
 .faq-answer {
     max-height: 0;
     overflow: hidden;
