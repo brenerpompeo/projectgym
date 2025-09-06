@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags Essenciais -->
+    <title>Project Gym - Uma Experiência Premium em Fitness em Campinas</title>
+    <meta name="description" content="Descubra a Project Gym em Campinas. Uma academia premium com musculação, aulas exclusivas, nutricionista e estética. Parceiros Wellhub, Totalpass e Gurupass.">
+    <meta name="keywords" content="academia premium, campinas, musculação, personal trainer, aulas, nutricionista, totalpass, wellhub, gurupass, pilates, muay thai, spinning, zumba, funcional">
+    <meta name="robots" content="index, follow">
+    <!-- OTIMIZAÇÃO SEO: Garanta que esta URL seja a final do seu site ao hospedar. -->
+    <link rel="canonical" href="https://projectgym.com.br/"> 
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://projectgym.com.br/"> <!-- OTIMIZAÇÃO SEO: Substituir pela URL real do site -->
+    <meta property="og:title" content="Project Gym - Sua Melhor Versão Começa Aqui">
+    <meta property="og:description" content="Uma experiência de fitness premium em Campinas, projetada para você superar limites com suporte e tecnologia de ponta.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphq5CVrORKcUC86JCZAytYOvALnV8NLp9s81UG2qHB838TH3RM0ewonllCKxayOV7GeQK7XgwZceL5EYwHmaLh2fAmtDp-R4zHOPGsIzu7vWmZFbVag3jqF8FHYEDq9dIWWkZpnA=s2048">
+    <meta property="og:image:alt" content="Ambiente interno da academia Project Gym com equipamentos modernos.">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://projectgym.com.br/"> <!-- OTIMIZAÇÃO SEO: Substituir pela URL real do site -->
+    <meta name="twitter:title" content="Project Gym - Sua Melhor Versão Começa Aqui">
+    <meta name="twitter:description" content="Uma experiência de fitness premium em Campinas, projetada para você superar limites com suporte e tecnologia de ponta.">
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphq5CVrORKcUC86JCZAytYOvALnV8NLp9s81UG2qHB838TH3RM0ewonllCKxayOV7GeQK7XgwZceL5EYwHmaLh2fAmtDp-R4zHOPGsIzu7vWmZFbVag3jqF8FHYEDq9dIWWkZpnA=s2048">
+    
+    <!-- OTIMIZAÇÃO DE PERFORMANCE: Para produção, o ideal é compilar o CSS com o Tailwind CLI e incluir o arquivo gerado aqui, em vez de usar o script da CDN. Isso reduz drasticamente o tamanho do arquivo. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://lh3.googleusercontent.com/p/AF1QipNm6jBwnRPRbAGa9ztf30wZEH1iKR6OXVDggb68=s128">
+
+    <!-- Estilos Internos -->
+    <style>
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Classe para travar o scroll do body quando o menu ou modal está aberto */
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #E5E7EB; /* gray-200 */
+        }
+        .font-display {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.075em;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to top, rgba(10,10,10,1) 10%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,1) 100%), url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphq5CVrORKcUC86JCZAytYOvALnV8NLp9s81UG2qHB838TH3RM0ewonllCKxayOV7GeQK7XgwZceL5EYwHmaLh2fAmtDp-R4zHOPGsIzu7vWmZFbVag3jqF8FHYEDq9dIWWkZpnA=s2048');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-item.open .faq-answer {
+            max-height: 20rem;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Efeito de elevação no header com scroll */
+        #site-header.elev { 
+            background: rgba(10, 10, 10, .9); 
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Animação de revelação de elementos no scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilização da barra de rolagem - Página inteira */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #FBBF24; /* amber-400 */
+            border-radius: 10px;
+            border: 2px solid #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #F59E0B; /* amber-500 */
+        }
+
+        /* Estilização da barra de rolagem - Menu mobile e Modal */
+        #drawer nav::-webkit-scrollbar, #modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        #drawer nav::-webkit-scrollbar-track, #modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        #drawer nav::-webkit-scrollbar-thumb, #modal-content::-webkit-scrollbar-thumb {
+            background-color: #4b5563; /* gray-600 */
+            border-radius: 10px;
+        }
+        #drawer nav::-webkit-scrollbar-thumb:hover, #modal-content::-webkit-scrollbar-thumb:hover {
+            background-color: #6b7280; /* gray-500 */
+        }
+    </style>
+    
+    <!-- Schema.org - Dados Estruturados para SEO Local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "Project Gym",
+      "description": "Uma experiência de fitness premium em Campinas, projetada para você superar limites com suporte, tecnologia de ponta e uma comunidade inspiradora.",
+      "image": "https://lh3.googleusercontent.com/p/AF1QipNm6jBwnRPRbAGa9ztf30wZEH1iKR6OXVDggb68=s128",
+      "url": "https://projectgym.com.br/", 
+      "telephone": "+5519000000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Dr. Antônio Carlos Sales Júnior, 325",
+        "addressLocality": "Campinas",
+        "addressRegion": "SP",
+        "postalCode": "13026-120",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -22.9295359,
+        "longitude": -47.0505199
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "05:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "05:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "07:00",
+          "closes": "12:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "00:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/_projectgym/"
+      ]
+    }
+    </script>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="site-header" class="sticky top-0 z-50 bg-black/50 border-b border-white/5 transition-all duration-300">
+        <div class="container mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 z-50">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipNm6jBwnRPRbAGa9ztf30wZEH1iKR6OXVDggb68=s128" alt="Logo Project Gym" class="h-12 w-12 rounded-full object-cover">
+                <span class="text-3xl font-display text-white tracking-wider">Project Gym</span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-2 text-gray-300 font-medium">
+                <a href="#sobre" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">Sobre</a>
+                <a href="#diferenciais" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">Diferenciais</a>
+                <a href="#oferecemos" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">O que oferecemos</a>
+                <a href="#planos" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">Planos</a>
+                <a href="#horarios" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">Horários</a>
+                <a href="#parceiros" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">Parceiros</a>
+                <a href="#faq" class="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">FAQ</a>
+                <a href="#contato" class="ml-4 bg-amber-400 text-black px-5 py-2 rounded-full font-bold hover:bg-amber-300 transition-colors">Contato</a>
+            </nav>
+
+            <button id="btn-open" class="lg:hidden p-2 rounded-full border border-slate-700" aria-label="Abrir menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M3 6h18M3 12h18M3 18h18" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Menu Mobile (Drawer) -->
+    <div id="drawer" class="fixed inset-0 bg-black/60 z-50 hidden" aria-hidden="true">
+        <div class="absolute inset-x-4 top-8 bottom-8 bg-[#111111] border border-slate-700 rounded-3xl flex flex-col">
+            <div class="pt-4 px-4 pb-2 flex justify-end">
+                <button id="btn-close" class="p-2" aria-label="Fechar menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M6 6l12 12M6 18L18 6" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+            </div>
+            <nav class="grid px-4 pb-4 overflow-y-auto">
+                <a href="#sobre" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Sobre</a>
+                <a href="#diferenciais" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Diferenciais</a>
+                <a href="#oferecemos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">O que oferecemos</a>
+                <a href="#planos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Planos</a>
+                <a href="#depoimentos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Depoimentos</a>
+                <a href="#horarios" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Horários</a>
+                <a href="#parceiros" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">Parceiros</a>
+                <a href="#faq" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-white/5 font-medium">FAQ</a>
+                <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="drawer__link w-full mt-2 inline-flex items-center justify-center rounded-full font-semibold transition px-5 py-3 bg-amber-400 text-black hover:bg-amber-300">Contato</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero-bg min-h-screen flex flex-col justify-center py-20">
+            <div class="relative z-10 max-w-5xl mx-auto px-5 text-center reveal">
+                <p class="uppercase tracking-widest text-sm text-amber-300 font-semibold">EXPERIÊNCIA PREMIUM EM CAMPINAS</p>
+                <h1 class="mt-4 text-5xl sm:text-7xl lg:text-8xl font-black leading-tight text-white font-display">
+                    Sua Melhor Versão <span class="text-amber-400">Começa Aqui</span>
+                </h1>
+                <p class="mt-6 text-gray-200 text-lg max-w-prose mx-auto">
+                    Uma experiência de fitness projetada para você superar limites com suporte, tecnologia de ponta e uma comunidade inspiradora.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full font-bold transition duration-300 transform hover:scale-105 active:scale-95 px-8 py-3 text-base bg-amber-400 text-black hover:bg-amber-300">
+                        Agende sua Aula Grátis
+                    </a>
+                    <a href="#planos" class="inline-flex items-center justify-center rounded-full font-bold transition duration-300 transform hover:scale-105 active:scale-95 px-8 py-3 text-base border-2 border-white/80 text-white hover:bg-white hover:text-black">
+                        Conheça os Planos
+                    </a>
+                </div>
+                 <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-300 max-w-lg mx-auto">
+                    <div class="flex items-center justify-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>Equipamentos de Ponta</div>
+                    <div class="flex items-center justify-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" /></svg>Aulas Exclusivas</div>
+                    <div class="flex items-center justify-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>Suporte Completo</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="py-24 md:py-40 bg-[#111111]">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center max-w-3xl mx-auto reveal">
+                    <p class="uppercase tracking-widest text-xs text-sky-400 font-semibold">NOSSO PROPÓSITO</p>
+                    <h2 class="text-5xl md:text-6xl font-display mt-2">Mais que academia, um projeto de vida</h2>
+                    <p class="mt-4 text-lg text-gray-400">A Project Gym nasceu para ser um ambiente onde todos se sentem bem-vindos e motivados. Oferecemos mais do que equipamentos: entregamos suporte, conhecimento e uma comunidade pronta para celebrar cada conquista com você.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="reveal">
+                        <img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrBnnmIsdSXMLYtoCucDUP8uiOjVN33rQelPdJftOpmgUHR0HJsXioO-ZewdvtzFqqUYv6-M6c-O17igI3LbAH7Db_kayuwAFrQrM6dAxY_Pqih3IDAs_CDELznW8VYrwQcwtDFgg=s2048" alt="Interior da Project Gym com equipamentos modernos" class="rounded-xl shadow-2xl w-full h-full object-cover">
+                    </div>
+                    <div class="reveal">
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 grid place-items-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl text-white">Comunidade Acolhedora</h3>
+                                    <p class="mt-1 text-gray-400">Um espaço para treinar, socializar e se sentir em casa, livre de julgamentos.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 grid place-items-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl text-white">Tecnologia de Ponta</h3>
+                                    <p class="mt-1 text-gray-400">Equipamentos modernos e estrutura completa para garantir o máximo desempenho no seu treino.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 grid place-items-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl text-white">Acompanhamento Profissional</h3>
+                                    <p class="mt-1 text-gray-400">Nossa equipe de instrutores, nutricionistas e especialistas está dedicada aos seus resultados.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Diferenciais -->
+        <section id="diferenciais" class="py-24 md:py-40">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">Suporte Completo <span class="text-amber-400">para sua Jornada</span></h2>
+                </div>
+                <!-- AJUSTE DE RESPONSIVIDADE: O grid agora adapta melhor em telas médias (tablets) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 reveal">
+                    <!-- Ícone Otimizado: Musculação -->
+                    <div class="bg-[#111111] p-8 rounded-xl text-center shadow-lg transform hover:-translate-y-3 transition-transform duration-300 flex flex-col items-center">
+                        <svg class="w-12 h-12 text-sky-400 mb-4" role="img" aria-label="Ícone de Musculação" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.4 14.4 9.6 9.6"/>
+                            <path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/>
+                            <path d="m21.5 21.5-1.4-1.4"/>
+                            <path d="m15.45 15.45-1-1"/>
+                            <path d="M5.343 2.515a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829L6.366 12.78A2 2 0 1 1 3.537 9.95l1.768-1.767a2 2 0 1 1-2.829-2.829z"/>
+                            <path d="m2.5 2.5 1.4 1.4"/>
+                            <path d="M8.55 8.55 9.55 9.55"/>
+                        </svg>
+                        <h3 class="text-3xl font-display text-white mb-2">Musculação</h3>
+                        <p class="text-gray-400">Equipamentos de ponta e instrutores de elite.</p>
+                    </div>
+                    <!-- Ícone Otimizado: Aulas em Grupo -->
+                    <div class="bg-[#111111] p-8 rounded-xl text-center shadow-lg transform hover:-translate-y-3 transition-transform duration-300 flex flex-col items-center">
+                        <svg class="w-12 h-12 text-amber-400 mb-4" role="img" aria-label="Ícone de Aulas em Grupo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <h3 class="text-3xl font-display text-white mb-2">Aulas em Grupo</h3>
+                        <p class="text-gray-400">Modalidades dinâmicas e motivantes.</p>
+                    </div>
+                    <!-- Ícone Otimizado: Nutricionista -->
+                    <div class="bg-[#111111] p-8 rounded-xl text-center shadow-lg transform hover:-translate-y-3 transition-transform duration-300 flex flex-col items-center">
+                        <svg class="w-12 h-12 text-sky-400 mb-4" role="img" aria-label="Ícone de Nutricionista" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
+                           <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/>
+                           <circle cx="20" cy="10" r="2"/>
+                        </svg>
+                        <h3 class="text-3xl font-display text-white mb-2">Nutricionista</h3>
+                        <p class="text-gray-400">Potencialize resultados com acompanhamento.</p>
+                    </div>
+                    <!-- Ícone Otimizado: Avaliação Física -->
+                    <div class="bg-[#111111] p-8 rounded-xl text-center shadow-lg transform hover:-translate-y-3 transition-transform duration-300 flex flex-col items-center">
+                        <svg class="w-12 h-12 text-amber-400 mb-4" role="img" aria-label="Ícone de Avaliação Física" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
+                        <h3 class="text-3xl font-display text-white mb-2">Avaliação Física</h3>
+                        <p class="text-gray-400">Monitore seu progresso com precisão.</p>
+                    </div>
+                     <!-- Ícone Otimizado: Estética -->
+                     <div class="bg-[#111111] p-8 rounded-xl text-center shadow-lg transform hover:-translate-y-3 transition-transform duration-300 flex flex-col items-center">
+                        <svg class="w-12 h-12 text-sky-400 mb-4" role="img" aria-label="Ícone de Estética" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="m12 2-2.81 6.18L3 10.22l6.18 2.81L12 19.22l2.81-6.18L21 10.22l-6.18-2.81Z"></path>
+                        </svg>
+                        <h3 class="text-3xl font-display text-white mb-2">Estética</h3>
+                        <p class="text-gray-400">Cuidados para seu completo bem-estar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- O que Oferecemos -->
+        <section id="oferecemos" class="py-24 md:py-40 bg-[#111111]">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">O que <span class="text-sky-400">Oferecemos</span></h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Um ecossistema completo para sua saúde e bem-estar, com uma vasta gama de atividades e serviços para todos os níveis e objetivos.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 text-center max-w-5xl mx-auto reveal text-lg">
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Musculação</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Pilates</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Muay Thai</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Step</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Spinning</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Funcional</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Bike</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Zumba</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Fit Dance</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Localizada</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Nutricionista</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Avaliação Física</span>
+                    <span class="bg-[#1C1C1C] text-gray-300 font-medium py-3 px-6 rounded-full transition-colors hover:bg-sky-400 hover:text-black cursor-default">Estética</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planos -->
+        <section id="planos" class="py-24 md:py-40">
+            <div class="container mx-auto px-6 lg:px-12">
+                 <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">Planos que se <span class="text-amber-400">adaptam a você</span></h2>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-6xl mx-auto reveal">
+                    <div class="bg-black border border-gray-800 p-10 rounded-xl text-center flex flex-col transition-all duration-300 hover:border-gray-700 hover:scale-105">
+                        <h3 class="font-display text-4xl">Mensal</h3>
+                        <p class="text-5xl font-bold my-6">R$109<span class="text-2xl font-medium">,90</span></p>
+                        <ul class="text-gray-400 space-y-3 mb-8 text-left"><li>✓ Acesso a todas as modalidades</li><li>✓ Sem taxa de matrícula</li><li>✓ Flexibilidade total</li></ul>
+                        <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="mt-auto bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors w-full">Quero esse!</a>
+                    </div>
+                    <div class="bg-amber-400 text-black p-10 rounded-xl text-center flex flex-col relative scale-105 shadow-2xl shadow-amber-400/20">
+                         <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-black text-white text-sm font-bold px-4 py-1 rounded-full uppercase">Mais Popular</span>
+                        <h3 class="font-display text-4xl">Anual</h3>
+                        <p class="text-6xl font-bold my-6">R$89<span class="text-2xl font-medium">,90</span></p>
+                        <ul class="space-y-3 mb-8 text-left font-medium"><li>✓ Acesso a todas as modalidades</li><li>✓ Sem taxa de matrícula</li><li>✓ Maior economia</li><li>✓ Avaliação Física Grátis</li></ul>
+                        <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="mt-auto bg-black text-white font-bold py-4 px-6 rounded-lg hover:bg-gray-800 transition-colors w-full text-lg">Começar agora</a>
+                    </div>
+                    <div class="bg-black border border-gray-800 p-10 rounded-xl text-center flex flex-col transition-all duration-300 hover:border-gray-700 hover:scale-105">
+                        <h3 class="font-display text-4xl">Semestral</h3>
+                        <p class="text-5xl font-bold my-6">R$99<span class="text-2xl font-medium">,90</span></p>
+                        <ul class="text-gray-400 space-y-3 mb-8 text-left"><li>✓ Acesso a todas as modalidades</li><li>✓ Sem taxa de matrícula</li><li>✓ Ótimo custo-benefício</li></ul>
+                        <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="mt-auto bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors w-full">Quero esse!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section id="depoimentos" class="py-24 md:py-40 bg-[#111111]">
+             <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">O que nossos <span class="text-amber-400">alunos dizem</span></h2>
+                    <div class="mt-4 flex flex-col items-center justify-center gap-2 text-gray-400">
+                        <p class="text-lg">Baseado em avaliações reais de nossos membros.</p>
+                        <img loading="lazy" src="https://white.logodownload.org/wp-content/uploads/2020/11/google-white-logo-2.png" alt="Logo Google" class="h-6 mt-1 opacity-80">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 reveal">
+                    <!-- Depoimento 1 -->
+                    <div class="bg-[#1C1C1C] p-8 rounded-xl border border-gray-800 flex flex-col">
+                        <p class="text-gray-300 text-lg flex-grow mb-6">"Academia nova, tudo novo! Diversidade de aparelhos, muito bem organizada e com ótima localização. Dá para parar o carro na rua tranquilamente."</p>
+                        <div class="flex items-center justify-between mt-auto pt-6 border-t border-gray-800">
+                            <div class="flex items-center">
+                                <img loading="lazy" src="https://placehold.co/60x60/1C1C1C/FFFFFF?text=T" alt="Foto de Tainá Lopes" class="w-12 h-12 rounded-full object-cover">
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Tainá Lopes</p>
+                                    <p class="text-sm text-gray-400">Aluna</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1" aria-label="Avaliação: 5 de 5 estrelas">
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                      <!-- Depoimento 2 -->
+                    <div class="bg-[#1C1C1C] p-8 rounded-xl border border-gray-800 flex flex-col">
+                        <p class="text-gray-300 text-lg flex-grow mb-6">"Adoro essa academia. Bem localizada e o horário de funcionamento é o ideal para quem precisa treinar antes de ir para o trabalho. Parabéns!"</p>
+                        <div class="flex items-center justify-between mt-auto pt-6 border-t border-gray-800">
+                           <div class="flex items-center">
+                                <img loading="lazy" src="https://placehold.co/60x60/1C1C1C/FFFFFF?text=A" alt="Foto de Ana Lucia Ribeiro" class="w-12 h-12 rounded-full object-cover">
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Ana Lucia Ribeiro</p>
+                                    <p class="text-sm text-gray-400">Aluna</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1" aria-label="Avaliação: 5 de 5 estrelas">
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                      <!-- Depoimento 3 -->
+                    <div class="bg-[#1C1C1C] p-8 rounded-xl border border-gray-800 flex flex-col">
+                        <p class="text-gray-300 text-lg flex-grow mb-6">"Ambiente muito bom! Atendimento ótimo pelos professores... estou gostando muito de frequentar a academia."</p>
+                        <div class="flex items-center justify-between mt-auto pt-6 border-t border-gray-800">
+                           <div class="flex items-center">
+                                <img loading="lazy" src="https://placehold.co/60x60/1C1C1C/FFFFFF?text=R" alt="Foto de Rozilda Carvalho" class="w-12 h-12 rounded-full object-cover">
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Rozilda Carvalho</p>
+                                    <p class="text-sm text-gray-400">Aluna</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1" aria-label="Avaliação: 5 de 5 estrelas">
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Parceiros -->
+        <section id="parceiros" class="py-24 md:py-40">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">Aceitamos os <span class="text-sky-400">melhores benefícios</span></h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Maximize seus treinos utilizando seu passe corporativo. Somos parceiros das maiores plataformas de bem-estar.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto items-center reveal">
+                    <a href="https://wellhub.com/pt-br/search/partners/project-gym-campinas/" target="_blank" rel="noopener noreferrer" class="block bg-[#1C1C1C] p-10 rounded-2xl border border-transparent hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex justify-center items-center h-24">
+                            <img loading="lazy" src="https://assets-cdn.wellhub.com/images/mep-cms/horizontal_complete_logo_magenta_3_e637a577de.png" alt="Logo Wellhub" class="max-h-12 w-auto">
+                        </div>
+                        <p class="text-center text-gray-400 mt-6">Acesse uma rede global de bem-estar com seu plano Wellhub.</p>
+                    </a>
+                    <a href="https://totalpass.com/br/academias/project-gym/" target="_blank" rel="noopener noreferrer" class="block bg-[#1C1C1C] p-10 rounded-2xl border border-transparent hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex justify-center items-center h-24">
+                            <img loading="lazy" src="https://totalpass.com/wp-content/uploads/2024/05/Logo_TotalPass_VerdeBranco-_1_-1.png" alt="Logo Totalpass" class="max-h-10 w-auto">
+                        </div>
+                        <p class="text-center text-gray-400 mt-6">Qualidade de vida e flexibilidade para seus treinos com Totalpass.</p>
+                    </a>
+                    <a href="https://www.gurupass.com.br/detalhes-da-academia/project-gym/" target="_blank" rel="noopener noreferrer" class="block bg-[#1C1C1C] p-10 rounded-2xl border border-transparent hover:border-sky-400 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex justify-center items-center h-24">
+                            <img loading="lazy" src="https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/fwqqhkvlqdocaztwddkl" alt="Logo Gurupass" class="max-h-9 w-auto">
+                        </div>
+                        <p class="text-center text-gray-400 mt-6">Descubra diversas atividades e cuide do seu bem-estar com Gurupass.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Horários -->
+        <section id="horarios" class="py-24 md:py-40 bg-[#111111]">
+            <div class="container mx-auto px-6 lg:px-12 max-w-4xl">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">Nossos <span class="text-amber-400">Horários</span></h2>
+                     <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Confira nossos horários de funcionamento e planeje sua visita para transformar seu dia.</p>
+                </div>
+                <div class="bg-[#1C1C1C] rounded-xl border border-gray-800 p-8 md:p-12 reveal">
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex justify-between items-center border-b border-gray-800 pb-4">
+                            <span class="font-semibold text-white">Segunda a Quinta</span>
+                            <span class="font-mono text-gray-300 tracking-wider">05:00 – 22:00</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-gray-800 pb-4">
+                            <span class="font-semibold text-white">Sexta-feira</span>
+                             <span class="font-mono text-gray-300 tracking-wider">05:00 – 21:00</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-gray-800 pb-4">
+                            <span class="font-semibold text-white">Sábado</span>
+                             <span class="font-mono text-gray-300 tracking-wider">07:00 – 12:00</span>
+                        </li>
+                        <li class="flex justify-between items-center pt-4">
+                            <span class="font-semibold text-white">Domingos e Feriados</span>
+                             <span class="font-semibold text-red-500">Fechado</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-24 md:py-40">
+            <div class="container mx-auto px-6 lg:px-12 max-w-4xl">
+                 <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">Perguntas <span class="text-amber-400">Frequentes</span></h2>
+                </div>
+                <div class="space-y-6 reveal">
+                    <div class="faq-item bg-[#111111] rounded-xl border border-gray-800">
+                        <div class="faq-question p-8 cursor-pointer flex justify-between items-center"><h3 class="text-xl font-semibold">Preciso agendar a aula experimental?</h3><svg class="faq-icon w-6 h-6 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                        <div class="faq-answer px-8"><p class="pb-6 text-gray-400">Sim, recomendamos o agendamento prévio pelo nosso WhatsApp para garantir o melhor atendimento e a disponibilidade de um de nossos professores para te acompanhar.</p></div>
+                    </div>
+                    <div class="faq-item bg-[#111111] rounded-xl border border-gray-800">
+                        <div class="faq-question p-8 cursor-pointer flex justify-between items-center"><h3 class="text-xl font-semibold">Quais são as formas de pagamento?</h3><svg class="faq-icon w-6 h-6 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                        <div class="faq-answer px-8"><p class="pb-6 text-gray-400">Aceitamos cartão de crédito (com recorrência automática), débito, PIX e dinheiro. Além disso, somos parceiros Wellhub, Totalpass e Gurupass.</p></div>
+                    </div>
+                    <div class="faq-item bg-[#111111] rounded-xl border border-gray-800">
+                        <div class="faq-question p-8 cursor-pointer flex justify-between items-center"><h3 class="text-xl font-semibold">A avaliação física está inclusa?</h3><svg class="faq-icon w-6 h-6 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                        <div class="faq-answer px-8"><p class="pb-6 text-gray-400">Sim! A primeira avaliação física é uma cortesia no plano anual para garantir que seu treino seja montado com a máxima precisão para seus objetivos.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="py-24 md:py-40 bg-[#111111]">
+            <div class="container mx-auto px-6 lg:px-12 text-center">
+                <div class="reveal">
+                    <h2 class="text-6xl md:text-7xl font-display uppercase">Venha nos <span class="text-sky-400">conhecer</span></h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Estamos na Av. Dr. Antônio Carlos Sales Júnior, 325. Agende sua visita ou venha treinar!</p>
+                </div>
+                <div class="mt-12 flex flex-wrap justify-center gap-6 reveal">
+                    <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" class="bg-amber-400 text-black font-bold py-4 px-8 rounded-lg hover:bg-amber-500 transition-colors transform hover:scale-105 text-lg">Agendar via WhatsApp</a>
+                    <a href="https://maps.app.goo.gl/3Hh3GjLgH5jRjY6P9" target="_blank" rel="noopener noreferrer" class="bg-gray-700 text-white font-bold py-4 px-8 rounded-lg hover:bg-gray-600 transition-colors transform hover:scale-105 text-lg">Ver no Mapa</a>
+                </div>
+                <div class="mt-20 rounded-xl overflow-hidden shadow-2xl reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.568853745814!2d-47.05051992468903!3d-22.92953597923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8c2e6d6b059%3A0x6b8c946f25e98544!2sAv.%20Dr.%20Ant%C3%B4nio%20Carlos%20Sales%20J%C3%BAnior%2C%20325%20-%20Jardim%20Proen%C3%A7a%2C%20Campinas%20-%20SP%2C%2013026-120!5e0!3m2!1spt-BR!2sbr!4v1725666738914!5m2!1spt-BR!2sbr" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale contrast-125"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Profissional -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex items-center gap-3">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipNm6jBwnRPRbAGa9ztf30wZEH1iKR6OXVDggb68=s128" alt="Logo Project Gym" class="h-12 w-12 rounded-full object-cover">
+                        <span class="text-3xl font-display text-white tracking-wider">Project Gym</span>
+                    </a>
+                    <p class="mt-4 text-gray-400 text-sm max-w-xs">Sua jornada para uma vida mais saudável e forte começa aqui. Experiência premium em fitness em Campinas.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:col-span-2">
+                    <div>
+                        <h3 class="font-bold text-white uppercase tracking-wider">Navegação</h3>
+                        <nav class="mt-4 space-y-2 text-gray-400">
+                            <a href="#sobre" class="block hover:text-amber-400 transition-colors">Sobre</a>
+                            <a href="#planos" class="block hover:text-amber-400 transition-colors">Planos</a>
+                            <a href="#parceiros" class="block hover:text-amber-400 transition-colors">Parceiros</a>
+                            <a href="#faq" class="block hover:text-amber-400 transition-colors">FAQ</a>
+                        </nav>
+                    </div>
+                     <div>
+                        <h3 class="font-bold text-white uppercase tracking-wider">Legal</h3>
+                        <nav class="mt-4 space-y-2 text-gray-400">
+                            <a href="#" data-policy="terms" class="block hover:text-amber-400 transition-colors">Termos de Uso</a>
+                            <a href="#" data-policy="privacy" class="block hover:text-amber-400 transition-colors">Política de Privacidade</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white uppercase tracking-wider">Siga-nos</h3>
+                        <div class="mt-4 flex items-center gap-4 text-gray-400">
+                             <a href="https://www.instagram.com/_projectgym/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-amber-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg></a>
+                             <a href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="hover:text-amber-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 20.15c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.38 0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.23.86 5.82 2.45s2.45 3.62 2.45 5.82c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.82s-.39-.12-.56.12c-.17.25-.64.82-.79.98s-.29.17-.54.06c-.25-.12-1.06-.39-2.02-1.25s-1.48-1.71-1.65-2c-.17-.29-.02-.44.11-.56s.25-.29.37-.43c.12-.14.17-.25.25-.41s.04-.29-.02-.41c-.06-.12-.56-1.34-.76-1.84s-.4-.42-.55-.43c-.15 0-.31-.02-.48-.02s-.41.06-.62.29c-.21.24-.82.81-.82 1.98s.84 2.3.96 2.46c.12.17 1.66 2.53 4.03 3.53s1.65.76 2.2.72c.55-.04 1.47-.6 1.68-1.18s.21-1.09.15-1.18c-.06-.1-.22-.16-.47-.28z" /></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center text-gray-500 text-sm border-t border-white/10 pt-8">
+                <p>&copy; <span id="year"></span> Project Gym. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Botão de Contato Flutuante -->
+    <a id="whatsapp-fab" href="https://api.whatsapp.com/message/V3A7BSQXGWRSJ1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp" class="fixed bottom-6 right-6 z-40 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 ease-in-out hover:bg-green-600 hover:scale-110">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 20.15c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.38 0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.23.86 5.82 2.45s2.45 3.62 2.45 5.82c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.82s-.39-.12-.56.12c-.17.25-.64.82-.79.98s-.29.17-.54.06c-.25-.12-1.06-.39-2.02-1.25s-1.48-1.71-1.65-2c-.17-.29-.02-.44.11-.56s.25-.29.37-.43c.12-.14.17-.25.25-.41s.04-.29-.02-.41c-.06-.12-.56-1.34-.76-1.84s-.4-.42-.55-.43c-.15 0-.31-.02-.48-.02s-.41.06-.62.29c-.21.24-.82.81-.82 1.98s.84 2.3.96 2.46c.12.17 1.66 2.53 4.03 3.53s1.65.76 2.2.72c.55-.04 1.47-.6 1.68-1.18s.21-1.09.15-1.18c-.06-.1-.22-.16-.47-.28z" /></svg>
+    </a>
+
+    <!-- Modal de Políticas -->
+    <div id="policy-modal" class="fixed inset-0 bg-black/70 z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-[#111111] border border-slate-700 rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col transform transition-transform duration-300 scale-95">
+            <header class="p-4 border-b border-slate-700 flex items-center justify-between flex-shrink-0">
+                <h3 id="modal-title" class="text-xl font-bold text-white"></h3>
+                <button id="modal-close-btn" class="p-2 rounded-full hover:bg-white/10 text-gray-400" aria-label="Fechar">
+                    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M6 6l12 12M6 18L18 6" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+            </header>
+            <main id="modal-content" class="p-6 text-gray-300 space-y-4 overflow-y-auto">
+                <!-- Conteúdo será inserido via JS -->
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Interno -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bodyEl = document.body;
+            
+            // --- Lógica do Header e Menu ---
+            (function headerInit() {
+                const header = document.getElementById('site-header');
+                if (!header) return;
+                
+                const onScroll = () => header.classList.toggle('elev', window.scrollY > 20);
+                window.addEventListener('scroll', onScroll, { passive: true });
+                onScroll();
+
+                const drawer = document.getElementById('drawer');
+                const btnOpen = document.getElementById('btn-open');
+                const btnClose = document.getElementById('btn-close');
+                if (!drawer || !btnOpen || !btnClose) return;
+
+                const openMenu = () => {
+                    drawer.classList.remove('hidden');
+                    drawer.setAttribute('aria-hidden', 'false');
+                    bodyEl.classList.add('overflow-hidden');
+                };
+
+                const closeMenu = () => {
+                    drawer.classList.add('hidden');
+                    drawer.setAttribute('aria-hidden', 'true');
+                    bodyEl.classList.remove('overflow-hidden');
+                };
+
+                btnOpen.addEventListener('click', openMenu);
+                btnClose.addEventListener('click', closeMenu);
+                drawer.addEventListener('click', (e) => {
+                    if (e.target.id === 'drawer') closeMenu();
+                });
+                document.querySelectorAll('#drawer .drawer__link').forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+            })();
+            
+            // --- Lógica do Botão Flutuante de WhatsApp ---
+            (function fabWhatsapp() {
+                const fab = document.getElementById('whatsapp-fab');
+                if(!fab) return;
+
+                const onScroll = () => {
+                    if (window.scrollY > 400) {
+                        fab.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+                    } else {
+                        fab.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+                    }
+                };
+                window.addEventListener('scroll', onScroll, { passive: true });
+                onScroll(); // Executa uma vez para verificar o estado inicial
+            })();
+
+            // --- Lógica de Animação no Scroll ---
+            (function scrollReveal() {
+                const scrollRevealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            scrollRevealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.reveal').forEach(el => {
+                    scrollRevealObserver.observe(el);
+                });
+            })();
+
+            // --- Lógica do FAQ (Accordion) ---
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                    if (!isOpen) {
+                        item.classList.add('open');
+                    }
+                });
+            });
+
+            // --- Lógica do Rodapé e Modal de Políticas ---
+            (function policyModal() {
+                const modal = document.getElementById('policy-modal');
+                if (!modal) return;
+
+                const modalContainer = modal.querySelector('div');
+                const closeBtn = document.getElementById('modal-close-btn');
+                const modalTitle = document.getElementById('modal-title');
+                const modalContent = document.getElementById('modal-content');
+                const links = document.querySelectorAll('[data-policy]');
+
+                const policies = {
+                    terms: {
+                        title: 'Termos de Uso',
+                        content: `
+                            <h4 class="font-bold mb-2 text-white">1. Aceitação dos Termos</h4>
+                            <p class="mb-4">Ao se matricular e utilizar as instalações da Project Gym, você concorda em cumprir estes Termos de Uso e todas as regras da academia. Se você não concordar com qualquer parte dos termos, não deverá utilizar nossos serviços.</p>
+                            <h4 class="font-bold mb-2 text-white">2. Pagamento e Matrícula</h4>
+                            <p class="mb-4">Os pagamentos dos planos devem ser realizados nas datas de vencimento estipuladas. Atrasos podem resultar em taxas adicionais ou suspensão do acesso. A matrícula é pessoal e intransferível.</p>
+                            <h4 class="font-bold mb-2 text-white">3. Conduta e Utilização</h4>
+                            <p class="mb-4">Esperamos que todos os membros mantenham uma conduta respeitosa. O uso correto dos equipamentos é obrigatório. A Project Gym não se responsabiliza por lesões resultantes de uso inadequado dos equipamentos ou da não observância das orientações dos instrutores.</p>
+                            <h4 class="font-bold mb-2 text-white">4. Cancelamento</h4>
+                            <p>As políticas de cancelamento variam de acordo com o plano contratado. Consulte o contrato de adesão ou a recepção para obter detalhes sobre multas e prazos.</p>
+                        `
+                    },
+                    privacy: {
+                        title: 'Política de Privacidade',
+                        content: `
+                            <h4 class="font-bold mb-2 text-white">1. Coleta de Dados</h4>
+                            <p class="mb-4">Coletamos informações pessoais (nome, contato, dados de pagamento) no momento da sua matrícula para a gestão do seu plano e para comunicação. Podemos coletar dados de saúde através da avaliação física, com seu consentimento explícito, para personalizar seu treino.</p>
+                            <h4 class="font-bold mb-2 text-white">2. Uso de Dados</h4>
+                            <p class="mb-4">Seus dados são utilizados para processar pagamentos, gerenciar seu acesso, enviar comunicações sobre seu plano, eventos e promoções da Project Gym. Dados de saúde são usados exclusivamente pela nossa equipe para garantir a segurança e eficácia do seu programa de treinos.</p>
+                            <h4 class="font-bold mb-2 text-white">3. Compartilhamento de Dados</h4>
+                            <p class="mb-4">Não compartilhamos suas informações pessoais com terceiros, exceto com processadores de pagamento e, se aplicável, com as plataformas de benefícios corporativos (Wellhub, Totalpass, etc.) que você utiliza para acessar nossos serviços.</p>
+                             <h4 class="font-bold mb-2 text-white">4. Seus Direitos</h4>
+                            <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão dos seus dados pessoais. Para exercer esses direitos, entre em contato com nossa recepção.</p>
+                        `
+                    }
+                };
+
+                const openModal = (type) => {
+                    const policy = policies[type];
+                    if (!policy) return;
+
+                    modalTitle.textContent = policy.title;
+                    modalContent.innerHTML = policy.content;
+                    
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    bodyEl.classList.add('overflow-hidden');
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalContainer.classList.remove('scale-95');
+                    }, 10);
+                };
+
+                const closeModal = () => {
+                    modal.classList.add('opacity-0');
+                    modalContainer.classList.add('scale-95');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                        // Apenas remove a classe se o menu mobile não estiver aberto
+                        if (document.getElementById('drawer').classList.contains('hidden')) {
+                           bodyEl.classList.remove('overflow-hidden');
+                        }
+                    }, 300);
+                };
+
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const policyType = e.target.dataset.policy;
+                        openModal(policyType);
+                    });
+                });
+
+                closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+                document.addEventListener('keydown', (e) => {
+                  if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+                    closeModal();
+                  }
+                });
+            })();
+            
+             // --- Atualiza o ano no Footer ---
+            (function year() {
+                const el = document.getElementById('year');
+                if (el) el.textContent = new Date().getFullYear();
+            })();
+
+        });
+    </script>
+</body>
+</html>
